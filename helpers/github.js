@@ -8,7 +8,7 @@ let getReposByUsername = (/* TODO */) => {
   // The options object has been provided to help you out,
   // but you'll have to fill in the URL
   let options = {
-    url: 'http://localhost:1128/repo',
+    url: 'http://localhost:1128/repos',
     headers: {
       'User-Agent': 'request',
       'Authorization': `token ${config.TOKEN}`

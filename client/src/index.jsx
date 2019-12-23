@@ -18,9 +18,11 @@ class App extends React.Component {
     // TODO
     $.ajax({
       type: "POST",
-      url: url,
+      url: 'http://localhost:1128/repos',
       data: JSON.stringify(term),
-      success: success
+      success: function(success) {
+        return success
+      }
     });
   }
 
