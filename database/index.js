@@ -17,26 +17,36 @@ mongoose.connect(`mongodb://localhost/${dbName}`,{useMongoClient: true  } ,funct
 let repoSchema = mongoose.Schema({
   // TODO: your schema here!
   id: Number,
-  full_name: String
+  full_name: String,
+  url: String
 
 });
 
 let Repo = mongoose.model('Repo', repoSchema);
 
 
-let repoSche = new Repo({
-  id:1,
-  full_name:"name1"
-});
+// let repoSche = new Repo({
+//   id:1,
+//   full_name:"name1"
+// });
 
-repoSche.save();
+// repoSche.save();
 
 let save = (repos) => {
   // TODO: Your code here
   // This function should save a repo or repos to
   // the MongoDB
-
-  Repo.save(repos);
+return new Promise((resolve, reject) =>{
+  var repoSche = new Repo(repos)
+  data.save((err, res) => {
+    if(err) {
+      reject(err);
+    }
+    else {
+      resolve(res)
+    }
+  })
+})
 
   // Repo.save((err, data) => {
   //   if (err) {
@@ -44,6 +54,20 @@ let save = (repos) => {
   //   }
   //   cb(null ,data);
   //document.save, instance, cb
+}
+let saveAll = (repoes) => {
+  return new Promise((resolve,reject)=>{
+
+    Repo.collection.insertMany(repoes,function(err,res){
+      if(err){
+        reject(err)
+      }else{
+        resolve(res)
+      }
+    })
+
+  })
+
 }
 
 module.exports.save = save;
