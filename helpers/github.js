@@ -19,7 +19,7 @@ let getReposByUsername = (username) => {
       }else {
         var array = JSON.parse(body);
         var result = [];
-        for(var i = 0 ; i<array.length;i++){
+        for(var i = 0 ; i < array.length; i++){
           var obj={}
           obj.userName = userName
           obj.repoName = array[i].name

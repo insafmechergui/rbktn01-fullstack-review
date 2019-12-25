@@ -11,14 +11,14 @@ mongoose.connect(`mongodb://localhost/${dbName}`,{useMongoClient: true  } ,funct
   });
 
   var db = mongoose.connection;
-  db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', ()=>{console.log('we are connected')});
+  db.on('error', console.error.bind(console, 'connection error:'));
 
 let repoSchema = mongoose.Schema({
   // TODO: your schema here!
-  id: Number,
-  full_name: String,
-  url: String
+  userName:String,
+  repoName:String,
+  url:String
 
 });
 
